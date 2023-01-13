@@ -1,4 +1,4 @@
-package com.smithG.jobBoard.view;
+package com.smithG.jobBoard.dao;
 
 import com.smithG.jobBoard.model.Users;
 import org.springframework.data.repository.CrudRepository;
