@@ -1,4 +1,4 @@
-package com.smithG.jobBoard;
+package com.smithG.socialApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

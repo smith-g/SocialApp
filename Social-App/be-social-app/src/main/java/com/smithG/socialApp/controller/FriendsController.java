@@ -1,4 +1,4 @@
-package com.smithG.jobBoard.controller;
+package com.smithG.socialApp.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

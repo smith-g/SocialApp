@@ -1,4 +1,4 @@
-package com.smithG.jobBoard.model;
+package com.smithG.socialApp.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;

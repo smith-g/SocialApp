@@ -1,20 +1,11 @@
-package com.smithG.jobBoard.securtiy;
+package com.smithG.socialApp.securtiy;
 
-import org.springframework.cglib.proxy.NoOp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-
-import javax.sql.DataSource;
 
 @Configuration
 public class ProjectSecurityConfig {
@@ -23,7 +14,7 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests()
-                        .requestMatchers("/post", "/account").authenticated()
+                        .requestMatchers("/posts", "/account", "/comments").authenticated()
                         .requestMatchers("/login", "/register").permitAll()
                 .and().formLogin()
                 .and().httpBasic();

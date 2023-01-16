@@ -1,7 +1,7 @@
-package com.smithG.jobBoard.securtiy;
+package com.smithG.socialApp.securtiy;
 
-import com.smithG.jobBoard.dao.UserDAO;
-import com.smithG.jobBoard.model.Users;
+import com.smithG.socialApp.dao.LoginDAO;
+import com.smithG.socialApp.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,7 +21,7 @@ public class SocialAppEmailAndPwdAuthenticationProvider implements Authenticatio
 
 
     @Autowired
-    private UserDAO userDAO;
+    private LoginDAO loginDAO;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -32,7 +32,7 @@ public class SocialAppEmailAndPwdAuthenticationProvider implements Authenticatio
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String email = authentication.getName();
         String pwd = authentication.getCredentials().toString();
-        List<Users> users = userDAO.findByEmail(email);
+        List<Users> users = loginDAO.findByEmail(email);
         if(users.size() > 0 ){
             if(passwordEncoder.matches(pwd, users.get(0).getPwd())){
                 List<GrantedAuthority> authorities  = new ArrayList<>();

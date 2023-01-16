@@ -1,13 +1,21 @@
-package com.smithG.jobBoard.model;
+package com.smithG.socialApp.model;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Timestamp;
 
 
+@Entity
 public class Posts {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO ,generator = "generator")
+    @GenericGenerator(name = "generator", strategy = "increment")
     private Long post_id;
     private String desc;
     private Timestamp timestamp;

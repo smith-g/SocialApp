@@ -1,7 +1,7 @@
-package com.smithG.jobBoard.controller;
+package com.smithG.socialApp.controller;
 
-import com.smithG.jobBoard.model.Users;
-import com.smithG.jobBoard.dao.UserDAO;
+import com.smithG.socialApp.model.Users;
+import com.smithG.socialApp.dao.LoginDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     @Autowired
-    UserDAO userDAO;
+    LoginDAO loginDAO;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -28,12 +28,12 @@ public class LoginController {
         try{
            String hashPwd = passwordEncoder.encode(users.getPwd());
            users.setPwd(hashPwd);
-            saveUser = userDAO.save(users);
+            saveUser = loginDAO.save(users);
             if(saveUser.getUser_id() > 0){
                 response = ResponseEntity.status(HttpStatus.CREATED).body("Given user details are successfully created");
             }
         }catch (Exception ex) {
-            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An exception occurred due to" + ex.getMessage());
+            response = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An exception occurred due to " + ex.getMessage());
         }
 
             return response;

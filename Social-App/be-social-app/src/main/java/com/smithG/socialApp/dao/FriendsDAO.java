@@ -1,4 +1,6 @@
-package com.smithG.jobBoard.dao;
+package com.smithG.socialApp.dao;
 
 public interface FriendsDAO {
+
+
 }

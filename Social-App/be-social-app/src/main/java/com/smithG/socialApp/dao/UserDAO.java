@@ -1,15 +1,14 @@
-package com.smithG.jobBoard.dao;
+package com.smithG.socialApp.dao;
 
-import com.smithG.jobBoard.model.Users;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import com.smithG.socialApp.model.Users;
+import org.apache.catalina.User;
 
 import java.util.List;
 
-@Repository
-public interface UserDAO extends CrudRepository<Users, Long> {
+public interface UserDAO {
 
-    List<Users> findByEmail(String email);
 
-    String findByUsername(String username);
+    List<Users> findUserByUsername(String username);
+
+    List<Users> findUserById(Long userId);
 }

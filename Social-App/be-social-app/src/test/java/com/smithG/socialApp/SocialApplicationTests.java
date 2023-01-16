@@ -1,10 +1,10 @@
-package com.smithG.jobBoard;
+package com.smithG.socialApp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JobBoardApplicationTests {
+class SocialApplicationTests {
 
 	@Test
 	void contextLoads() {
