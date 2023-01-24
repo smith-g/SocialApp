@@ -17,8 +17,7 @@ public class Posts {
     @GeneratedValue(strategy = GenerationType.AUTO ,generator = "generator")
     @GenericGenerator(name = "generator", strategy = "increment")
     private Long post_id;
-    private String desc;
-    private Timestamp timestamp;
+    private String texts;
     private int likes;
     private Long Comments_id;
     private Long user_id;
@@ -49,20 +48,12 @@ public class Posts {
         this.likes = likes;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public String getTexts() {
+        return texts;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setTexts(String texts) {
+        this.texts = texts;
     }
 
     public Long getPost_id() {
@@ -77,8 +68,7 @@ public class Posts {
     public String toString() {
         return "Posts{" +
                 "post_id=" + post_id +
-                ", desc='" + desc + '\'' +
-                ", timestamp=" + timestamp +
+                ", texts='" + texts + '\'' +
                 ", likes=" + likes +
                 ", Comments_id=" + Comments_id +
                 ", user_id=" + user_id +

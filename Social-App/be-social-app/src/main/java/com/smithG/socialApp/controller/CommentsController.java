@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CommentsController {
 
-    @RequestMapping(path = "/Comments", method = RequestMethod.GET)
+    @RequestMapping(path = "/comments", method = RequestMethod.GET)
     public String comments(){
         return "This is some Comments";
     }
