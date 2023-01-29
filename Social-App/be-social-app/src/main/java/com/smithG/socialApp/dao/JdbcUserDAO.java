@@ -1,6 +1,7 @@
 package com.smithG.socialApp.dao;
 
 import com.smithG.socialApp.model.Users;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,6 +13,7 @@ import java.util.List;
 @Component
 public class JdbcUserDAO implements UserDAO {
 
+    @Autowired
     private final JdbcTemplate jdbcTemplate;
 
     public JdbcUserDAO(JdbcTemplate jdbcTemplate) {
@@ -22,7 +24,9 @@ public class JdbcUserDAO implements UserDAO {
     public List<Users> findUsersByUsername(String username) {
         String sql = "SELECT username FROM users where username = ?";
         List<Users> users = new ArrayList<>();
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
+
         while(results.next()){
             Users user = mapRowToUser(results);
             users.add(user);
@@ -34,6 +38,7 @@ public class JdbcUserDAO implements UserDAO {
     public String findUsernameById(Long userId) {
         String sql = "select username from users where user_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+
         if(results.next()){
             return mapRowToUser(results).getUsername();
         }else {

@@ -11,7 +11,7 @@ public class Comments {
     private Long commentsId;
     private String text;
     private Long postId;
-    private Double likes;
+    private int likes;
     private Long userId;
 
 
@@ -23,12 +23,12 @@ public class Comments {
         this.userId = userId;
     }
 
-    public Double getLikes() {
+    public int getLikes() {
         return likes;
     }
 
-    public void setLikes(Long likes) {
-        this.likes = Double.valueOf(likes);
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 
     public Long getPostId() {

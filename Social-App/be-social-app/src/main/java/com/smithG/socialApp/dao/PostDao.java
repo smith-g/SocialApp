@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface PostDao {
 
+    List<Posts> getAllPosts();
+
     Posts findPostById(Long postId);
 
-    List<Posts> findPostByUserId(Long userId);
+    List<Posts> findPostsByUserId(Long userId);
 
     Posts addPost(Posts posts);
 

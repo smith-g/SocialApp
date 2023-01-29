@@ -19,7 +19,7 @@ public class Posts {
     private Long post_id;
     private String texts;
     private int likes;
-    private Long Comments_id;
+    private int num_Comments;
     private Long user_id;
 
 
@@ -32,12 +32,12 @@ public class Posts {
         this.user_id = user_id;
     }
 
-    public Long getComments_id() {
-        return Comments_id;
+    public int getNum_Comments() {
+        return num_Comments;
     }
 
-    public void setComments_id(Long comments_id) {
-        Comments_id = comments_id;
+    public void setNum_Comments(int num_Comments) {
+        this.num_Comments = num_Comments;
     }
 
     public int getLikes() {
@@ -70,7 +70,7 @@ public class Posts {
                 "post_id=" + post_id +
                 ", texts='" + texts + '\'' +
                 ", likes=" + likes +
-                ", Comments_id=" + Comments_id +
+                ", Comments_id=" + num_Comments +
                 ", user_id=" + user_id +
                 '}';
     }

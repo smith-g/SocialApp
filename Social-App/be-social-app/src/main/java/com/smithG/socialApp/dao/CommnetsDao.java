@@ -10,7 +10,5 @@ public interface CommnetsDao {
 
     List<Comments> commentsByPost(Long postId);
 
-    Double likes(Double likes);
-
     List<Comments> repliesByUser(Long userId);
 }
