@@ -1,10 +1,7 @@
 package com.smithG.socialApp.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Timestamp;
@@ -16,6 +13,7 @@ public class Posts {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO ,generator = "generator")
     @GenericGenerator(name = "generator", strategy = "increment")
+    @Column(name = "post_id")
     private Long post_id;
     private String texts;
     private int likes;

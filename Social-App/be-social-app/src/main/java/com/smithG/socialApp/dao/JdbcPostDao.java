@@ -65,16 +65,11 @@ public class JdbcPostDao implements PostDao{
     public Posts addPost(Posts posts) {
             String sql = "INSERT INTO post(texts, likes, num_comments, user_id)" +
                     " VALUES(?,?,?,?)";
-            String getPost = "Select * from post where post_id = ?";
-            Posts posts1 = new Posts();
 
             jdbcTemplate.queryForRowSet(sql, posts.getTexts(), posts.getLikes(),
                     posts.getNum_Comments(), posts.getUser_id());
-            SqlRowSet rs = jdbcTemplate.queryForRowSet(getPost, posts.getPost_id());
-             while (rs.next()){
-                 posts1 = mapRowToPost(rs);
-             }
-             return posts1;
+
+             return findPostById(posts.getPost_id());
     }
 
     @Override
@@ -83,10 +78,22 @@ public class JdbcPostDao implements PostDao{
         jdbcTemplate.update(sql, postId);
     }
 
+    @Override
+    public void addLikes(long postId, long userId) {
+        String sql  = "BEGIN TRANSACTION;" +
+                "INSERT INTO likes(post_id, user_id) values (?,?)" +
+                "UPDATE post SET likes = (SELECT COUNT(*) FROM likes where post_id = ?) where post_id = ?" +
+                "COMMIT;";
+
+        jdbcTemplate.update(sql, postId, userId);
+    }
+
+
+
     private Posts mapRowToPost(SqlRowSet rs){
         Posts posts = new Posts();
         posts.setPost_id(rs.getLong("post_id"));
-        posts.setTexts(rs.getNString("texts"));
+        posts.setTexts(rs.getString("texts"));
         posts.setLikes(rs.getInt("likes"));
         posts.setNum_Comments(rs.getInt("num_comments"));
         posts.setUser_id(rs.getLong("user_id"));

@@ -14,8 +14,8 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests()
-                        .requestMatchers("/posts", "/account", "/user","/posts/{userId}").authenticated()
-                        .requestMatchers("/login", "/register", "/addpost", "/comments", "/post/{postId}").permitAll()
+                        .requestMatchers( "/account", "/user", "/deletepost/{postId}", "/addpost").authenticated()
+                        .requestMatchers("/login", "/register", "/post/{postId}", "/posts/{userId}", "/posts").permitAll()
                 .and().formLogin()
                 .and().httpBasic();
         return http.build();

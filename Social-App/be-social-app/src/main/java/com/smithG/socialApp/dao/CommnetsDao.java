@@ -11,4 +11,10 @@ public interface CommnetsDao {
     List<Comments> commentsByPost(Long postId);
 
     List<Comments> repliesByUser(Long userId);
+
+    Comments addComment(Comments comments);
+
+    void addLikes(long commentsId, long userId);
+
+    void deleteComments(long commentsId);
 }

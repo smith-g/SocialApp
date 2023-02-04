@@ -16,5 +16,6 @@ public interface PostDao {
 
     void deletePost(Long postId);
 
+    void addLikes(long postId, long userId);
 
 }

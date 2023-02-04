@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
@@ -17,9 +18,10 @@ import java.util.List;
 @RestController
 public class PostController {
 
-    @Autowired
+
     private final PostDao postDao;
 
+    @Autowired
     public PostController(PostDao postDao) {
         this.postDao = postDao;
     }
